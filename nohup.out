@@ -1,0 +1,25 @@
+Usage: streamlit run [OPTIONS] TARGET [ARGS]...
+Try 'streamlit run --help' for help.
+
+Error: Streamlit requires raw Python (.py) files, but the provided file has no extension.
+For more information, please see https://docs.streamlit.io
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8504
+  Network URL: http://172.31.40.84:8504
+  External URL: http://3.108.70.93:8504
+
+/home/ubuntu/Carrier_Payment_Tracker/centralOps_role.py:37: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  df[col] = pd.to_datetime(df[col], errors='coerce')
+/home/ubuntu/Carrier_Payment_Tracker/centralOps_role.py:37: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  df[col] = pd.to_datetime(df[col], errors='coerce')
+/home/ubuntu/Carrier_Payment_Tracker/centralOps_role.py:37: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  df[col] = pd.to_datetime(df[col], errors='coerce')
+/home/ubuntu/Carrier_Payment_Tracker/centralOps_role.py:37: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  df[col] = pd.to_datetime(df[col], errors='coerce')
+/home/ubuntu/Carrier_Payment_Tracker/centralOps_role.py:37: UserWarning: Parsing dates in %d-%m-%Y format when dayfirst=False (the default) was specified. Pass `dayfirst=True` or specify a format to silence this warning.
+  df[col] = pd.to_datetime(df[col], errors='coerce')
