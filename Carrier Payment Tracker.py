@@ -85,10 +85,7 @@ def main():
     logging.shutdown()
 
 def show_role_page(email, role):
-    # st.subheader(f"Welcome, {email.upper()}!")
-
-
-    if role == "Admin" and email == "anoop.raghavan@agraga.com":
+    if role == "Admin":
         payment_planner()
     elif role == "Central Ops":
         display_centralOps_report()

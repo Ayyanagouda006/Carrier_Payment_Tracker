@@ -93,6 +93,55 @@ def display_payment_form():
             except Exception as e:
                 st.error(f"Failed to update data: {e}")
 
+def bl_release():
+    if os.path.exists(EXCEL_FILE):
+        df = pd.read_excel(EXCEL_FILE)
+
+        # Ensure consistent column names
+        df.columns = df.columns.str.strip()
+
+        # Filter for relevant rows (paid & not yet released)
+        df_filtered = df[
+            (df['Status'].astype(str).str.strip().str.lower() == 'paid') &
+            (df['BL Released?'].astype(str).str.strip().str.lower() != 'released')
+        ].copy()  # Use .copy() to avoid SettingWithCopyWarning
+
+        # Convert 'BL Released?' to checkbox-friendly format
+        df_filtered['BL Released?'] = df_filtered['BL Released?'].astype(str).str.strip().str.lower() == 'released'
+
+        # Define editable columns
+        editable_columns = ['BL Released?']
+        disabled_columns = [col for col in df_filtered.columns if col not in editable_columns]
+
+        # Show the editor
+        edited_df = st.data_editor(
+            df_filtered,
+            hide_index=True,
+            use_container_width=True,
+            disabled=disabled_columns,
+            column_config={
+                'BL Released?': st.column_config.CheckboxColumn(label='BL Released?')
+            }
+        )
+
+        # Update logic
+        if st.button("Update"):
+            update_count = 0
+            for _, row in edited_df.iterrows():
+                if row['BL Released?']:  # Only update if checkbox is checked
+                    cond = (
+                        (df['MBL #'] == row['MBL #']) &
+                        (df['Carrier Invoice #'] == row['Carrier Invoice #']) &
+                        (df['Currency'] == row['Currency']) &
+                        (df['Amount'] == row['Amount']) &
+                        (df['Status'].astype(str).str.strip().str.lower() == 'paid')
+                    )
+                    df.loc[cond, 'BL Released?'] = 'Released'
+                    update_count += 1
+
+            df.to_excel(EXCEL_FILE, index=False)
+            st.success(f"✅ {update_count} row(s) marked as 'Released'.")
+            st.rerun()
 
 def display_report():
     st.subheader("Payment Request Report")
@@ -106,8 +155,8 @@ def display_centralOps_report():
     with st.sidebar:
         selected = option_menu(
             menu_title="Central Ops Panel",
-            options=["Payment Request","Report"],
-            icons=["Form","table"],
+            options=["Payment Request","BL Release","Report"],
+            # icons=["Form","table"],
             default_index=0,
             menu_icon="cast"
         )
@@ -115,7 +164,7 @@ def display_centralOps_report():
     if selected == "Payment Request":
         display_payment_form()
     elif selected == "BL Release":
-        pass
+        bl_release()
     else:
         display_report()
 

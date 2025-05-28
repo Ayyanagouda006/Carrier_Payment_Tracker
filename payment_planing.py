@@ -135,17 +135,49 @@ def pay_plan():
     else:
         st.info("No data available.")
 
+def load_team_names():
+    xls = pd.ExcelFile(r"data/Users.xlsx")
+    return [sheet for sheet in xls.sheet_names if sheet != "Agusers"]
 
+def load_team_data(sheet_name):
+    return pd.read_excel(r"data/Users.xlsx", sheet_name=sheet_name)
+
+def save_team_data(sheet_name, df):
+    with pd.ExcelWriter(r"data/Users.xlsx", engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
+        df.to_excel(writer, sheet_name=sheet_name, index=False)
 
 def payment_planner():
     with st.sidebar:
         selected = option_menu(
             menu_title="Payment Planner Panel",
-            options=["Payment Planning"],
-            icons=["table"],
+            options=["Payment Planning","UAM"],
+            # icons=["table"],
             default_index=0,
             menu_icon="cast"
         )
 
     if selected == "Payment Planning":
         pay_plan()
+    elif selected == "UAM":
+        st.title("👥 User Access Management")
+
+        # try:
+        team_names = load_team_names()
+        selected_team = st.selectbox("Select Team", team_names)
+
+        if selected_team:
+            df = load_team_data(selected_team)
+            st.write(f"### 📄 Users in {selected_team}")
+            edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True, key="edit_uam")
+
+            if st.button("💾 Save Changes", key="save_uam"):
+                # Save updated team sheet
+                save_team_data(selected_team, edited_df)
+
+                st.cache_data.clear()
+                st.success("✅ Changes saved and cache cleared. New roles will be reflected on next login.")
+                st.success("✅ Team data updated!")
+
+        # except Exception as e:
+        #     st.error(f"Error loading user data: {e}")
+
