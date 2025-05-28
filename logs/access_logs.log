@@ -251,3 +251,19 @@
 2025-05-28 04:52:09 | INFO |  shailaja.k@agraga.com | Login Attempt | SUCCESS
 2025-05-28 04:52:09 | INFO |  shailaja.k@agraga.com | Role Assigned: Central Ops | SUCCESS
 2025-05-28 04:52:09 | INFO |  shailaja.k@agraga.com | Login Successful | SUCCESS
+2025-05-28 08:58:23 | INFO |  anoop.raghavan@agraga.com | Login Attempt | SUCCESS
+2025-05-28 08:58:23 | INFO |  anoop.raghavan@agraga.com | Role Assigned: Admin | SUCCESS
+2025-05-28 08:58:23 | INFO |  anoop.raghavan@agraga.com | Login Successful | SUCCESS
+2025-05-28 10:53:00 | INFO |  vijay.mali@agraga.com | Login Attempt | SUCCESS
+2025-05-28 10:53:00 | INFO |  vijay.mali@agraga.com | Role Assigned: view | SUCCESS
+2025-05-28 10:53:00 | INFO |  vijay.mali@agraga.com | Login Successful | SUCCESS
+2025-05-28 10:53:00 | INFO |  vijay.mali@agraga.com | Unrecognized Role: view | WARNING
+2025-05-28 10:53:17 | INFO |  rohit.shinde@agraga.com | Login Attempt | SUCCESS
+2025-05-28 10:53:17 | INFO |  rohit.shinde@agraga.com | Role Assigned: Finance | SUCCESS
+2025-05-28 10:53:17 | INFO |  rohit.shinde@agraga.com | Login Successful | SUCCESS
+2025-05-28 12:35:00 | INFO |  anoop.raghavan@agraga.com | Login Attempt | SUCCESS
+2025-05-28 12:35:00 | INFO |  anoop.raghavan@agraga.com | Role Assigned: Admin | SUCCESS
+2025-05-28 12:35:00 | INFO |  anoop.raghavan@agraga.com | Login Successful | SUCCESS
+2025-05-28 12:35:09 | INFO |  rohit.shinde@agraga.com | Login Attempt | SUCCESS
+2025-05-28 12:35:09 | INFO |  rohit.shinde@agraga.com | Role Assigned: Finance | SUCCESS
+2025-05-28 12:35:09 | INFO |  rohit.shinde@agraga.com | Login Successful | SUCCESS
